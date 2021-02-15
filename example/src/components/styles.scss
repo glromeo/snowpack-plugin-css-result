@@ -1,0 +1,69 @@
+$bg: #f4f4f4;
+$ribbon: #4b9ae5;
+$tail: darken($ribbon, 5%);
+$ribbonSize: 0.5em;
+$fontSize: 2.5em;
+$font: "Roboto", sans-serif;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:host {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(0, 0, 0);
+  background: $bg;
+  font-family: $font;
+}
+
+.ribbon {
+  background: $ribbon;
+  display: inline-block;
+  color: white;
+  padding: $ribbonSize 0.7em;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  position: relative;
+  font-size: $fontSize;
+  text-transform: uppercase;
+  transform-style: preserve-3d;
+  transform: rotate(-20deg) skew(-20deg, 10deg);
+  box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25);
+
+  &:before,
+  &:after {
+    content: "";
+    width: 0;
+    height: 2em;
+    display: block;
+    background: #4993da;
+    position: absolute;
+    border-style: solid;
+    border-width: $ribbonSize;
+    z-index: -1; // only necessary for flat (transform-style)
+    transform: translateZ(-1em); // orders the ribbon tails
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  &:before {
+    left: $ribbonSize * -1;
+    top: $ribbonSize;
+    border-color: $tail darken($tail, 10%) $tail $tail;
+  }
+
+  &:after {
+    right: $ribbonSize * -1;
+    top: $ribbonSize * -1;
+    border-color: $tail $tail $tail darken($tail, 10%);
+  }
+
+  span:after {
+    content: "🎉";
+  }
+}

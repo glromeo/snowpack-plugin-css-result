@@ -1,0 +1,7 @@
+/node_modules/
+**/node_modules/
+/dist/
+**/dist/
+/.idea/
+/snowpack-plugin-css-result.iml
+*.log
