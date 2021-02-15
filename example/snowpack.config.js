@@ -6,7 +6,7 @@ module.exports = {
     },
     plugins: [
         [
-            "../index.js", // in real world use "snowpack-plugin-css-result" insteand of "../hello-world.js"
+            "snowpack-plugin-css-result",
             {
                 include:"src/components/**"
             }
