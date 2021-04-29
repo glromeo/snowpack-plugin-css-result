@@ -36,6 +36,8 @@ module.exports = function (snowpackConfig, pluginOptions) {
             const content = await delegate.load({filePath, isDev});
             if (content) {
                 return accept(filePath) ? cssResultModule(content) : cssProxyModule(content);
+            } else {
+                return '';
             }
         }
     };
