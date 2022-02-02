@@ -30,6 +30,7 @@ module.exports = function (snowpackConfig, pluginOptions) {
         name: "snowpack-plugin-css-result",
         resolve: {input: [".scss", ".sass"], output: [".js"]},
         onChange(args) {
+            delegate.markChanged = this.markChanged;
             delegate.onChange(args);
         },
         async load({filePath, isDev}) {
